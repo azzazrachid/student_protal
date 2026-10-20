@@ -1,0 +1,164 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Student Registration{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Student Registration Form</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">
+                    All fields are required. Please fill in your information carefully.
+                </p>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Student ID -->
+                    <div class="mb-3">
+                        <label for="{{ form.student_id.id_for_label }}" class="form-label fw-bold">
+                            Student ID <span class="text-danger">*</span>
+                        </label>
+                        {{ form.student_id }}
+                        {% if form.student_id.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.student_id.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">{{ form.student_id.help_text }}</div>
+                    </div>
+
+                    <!-- First Name -->
+                    <div class="mb-3">
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label fw-bold">
+                            First Name <span class="text-danger">*</span>
+                        </label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.first_name.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="mb-3">
+                        <label for="{{ form.last_name.id_for_label }}" class="form-label fw-bold">
+                            Last Name <span class="text-danger">*</span>
+                        </label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.last_name.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="mb-3">
+                        <label for="{{ form.date_of_birth.id_for_label }}" class="form-label fw-bold">
+                            Date of Birth <span class="text-danger">*</span>
+                        </label>
+                        {{ form.date_of_birth }}
+                        {% if form.date_of_birth.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.date_of_birth.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">{{ form.date_of_birth.help_text }}</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label fw-bold">
+                            Email <span class="text-danger">*</span>
+                        </label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.email.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        <label for="{{ form.phone.id_for_label }}" class="form-label fw-bold">
+                            Phone <span class="text-danger">*</span>
+                        </label>
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.phone.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">{{ form.phone.help_text }}</div>
+                    </div>
+
+                    <!-- Wilaya -->
+                    <div class="mb-3">
+                        <label for="{{ form.wilaya.id_for_label }}" class="form-label fw-bold">
+                            Wilaya <span class="text-danger">*</span>
+                        </label>
+                        {{ form.wilaya }}
+                        {% if form.wilaya.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.wilaya.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Specialty -->
+                    <div class="mb-3">
+                        <label for="{{ form.specialty.id_for_label }}" class="form-label fw-bold">
+                            Specialty <span class="text-danger">*</span>
+                        </label>
+                        {{ form.specialty }}
+                        {% if form.specialty.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.specialty.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Baccalaureate Average -->
+                    <div class="mb-3">
+                        <label for="{{ form.bac_average.id_for_label }}" class="form-label fw-bold">
+                            Baccalaureate Average <span class="text-danger">*</span>
+                        </label>
+                        {{ form.bac_average }}
+                        {% if form.bac_average.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.bac_average.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="form-text">{{ form.bac_average.help_text }}</div>
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="mb-4 form-check">
+                        {{ form.consent }}
+                        <label class="form-check-label" for="{{ form.consent.id_for_label }}">
+                            {{ form.consent.label }}
+                        </label>
+                        {% if form.consent.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.consent.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary btn-lg px-4">
+                            Register Student
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
